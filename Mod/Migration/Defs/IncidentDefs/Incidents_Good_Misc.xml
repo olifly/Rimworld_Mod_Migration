@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <IncidentDef>
+    <defName>AnimalMigrationWave</defName>
+    <workerClass>AltReality.Rimworld.MigrationMod.IncidentWorker_MigrationWave</workerClass>
+    <chance>0</chance>
+    <minRefireDays>999</minRefireDays>    
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+  
+  <IncidentDef>
+    <defName>AnimalMigration</defName>
+    <WorkerClass>AltReality.Rimworld.MigrationMod.IncidentWorker_Migration</WorkerClass>
+    <mapCondition>AnimalMigrationMapCondition</mapCondition>
+    <letterLabel>Migration</letterLabel>
+    <letterText>The large animals have begun their annual migration.</letterText>
+    <letterType>Good</letterType>
+    <chance>100</chance>
+    <!-- Each month is 10 days so let's make a mininum 3 months between migrations -->
+	<minRefireDays>30</minRefireDays>
+    <durationDays>
+      <min>5</min>
+      <max>10</max>
+    </durationDays>
+  </IncidentDef>
+  
+</Defs>

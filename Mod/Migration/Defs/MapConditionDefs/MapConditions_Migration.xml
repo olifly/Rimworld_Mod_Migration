@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MapConditionDefs>
+	<MapConditionDef>
+		<defName>AnimalMigrationMapCondition</defName>
+		<conditionClass>AltReality.Rimworld.MigrationMod.MapCondition_Migration</conditionClass>
+		<label>Migration</label>
+		<description>Annual animal migration has started.</description>
+		<endMessage>The migration is ending</endMessage>
+	</MapConditionDef>	
+</MapConditionDefs>
