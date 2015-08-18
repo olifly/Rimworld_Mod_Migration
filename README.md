@@ -1,1 +1,3 @@
-# Rimworld_Mod_Migration
+# Animal migration mod.
+
+A small mod that adds animals migration to Rimworld
