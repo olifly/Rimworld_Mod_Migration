@@ -17,11 +17,11 @@
     <letterText>The large animals have begun their annual migration.</letterText>
     <letterType>Good</letterType>
     <chance>100</chance>
-    <!-- Each month is 10 days so let's make a mininum 3 months between migrations -->
+    <!-- Each month is 10 days so let's make a mininum of 3 months between migrations -->
 	<minRefireDays>30</minRefireDays>
     <durationDays>
-      <min>5</min>
-      <max>10</max>
+      <min>4</min>
+      <max>8</max>
     </durationDays>
   </IncidentDef>
   
