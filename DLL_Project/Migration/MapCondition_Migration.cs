@@ -15,9 +15,8 @@ namespace AltReality.Rimworld.MigrationMod
         private int ticksUntilNextWave;
                                                 
         public MapCondition_Migration()
-        {
-            //Pick the animal type to migrate. For now we will pick the animal with the highest pointcost in the biome
-            animalPawnDef = Find.Map.Biome.AllWildAnimals.MaxBy(def => def.pointsCost);
+        {            
+            animalPawnDef = MigrationUtilities.GetMigrationAnimalDef();
 
             migrationEnterVec = MigrationUtilities.FindMigrationEnterVec();
             migrationExitVec = MigrationUtilities.FindMigrationExitVec(migrationEnterVec);
@@ -54,7 +53,7 @@ namespace AltReality.Rimworld.MigrationMod
             {
                 return 0;
             }
-
+            //Calculate the time until next migration waves.  Base time is 12-24 gamehours.  Harder difficulity increases the time between waves while easier difficulity decreases it.
             return Rand.RangeInclusive(MigrationUtilities.DaysToTicks((0.50f * Find.Storyteller.difficulty.threatScale).Clamp(0.25f,1.0f)), MigrationUtilities.DaysToTicks((1.0f* Find.Storyteller.difficulty.threatScale).Clamp(0.75f,2.0f)));            
         }
 

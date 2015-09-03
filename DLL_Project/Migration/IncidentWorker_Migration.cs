@@ -9,9 +9,8 @@ namespace AltReality.Rimworld.MigrationMod
     {
         protected override bool StorytellerCanUseNowSub()
         {
-            //Only trigger the incident if it's fall or spring
+            //Only trigger the map condition if it's fall or spring and it hasn't already been triggered.
             return !Find.MapConditionManager.ConditionIsActive(this.def.mapCondition) && (GenDate.CurrentSeason == Season.Spring || GenDate.CurrentSeason == Season.Fall);
-        }
-       
+        }       
     }
 }

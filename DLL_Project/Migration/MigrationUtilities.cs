@@ -13,9 +13,9 @@ namespace AltReality.Rimworld.MigrationMod
         }
 
         public static IntVec3 RandomStandableEdgeCellNear(IntVec3 c, int squareRadius)
-        {
+        {            
             IntVec3 retCell;
-            if (!GenCellFinder.TryFindRandomEdgeCellWith(pos => Math.Abs(pos.x - c.x) <= squareRadius && Math.Abs(pos.z - c.z) <= squareRadius && !pos.Impassable(), out retCell))
+            if (!CellFinder.TryFindRandomEdgeCellWith(pos => Math.Abs(pos.x - c.x) <= squareRadius && Math.Abs(pos.z - c.z) <= squareRadius && !pos.Impassable(), out retCell))
             {
                 Log.Warning("Could not find a suitable cell. Returning input cell");
                 retCell = c;
@@ -64,7 +64,7 @@ namespace AltReality.Rimworld.MigrationMod
                 IntVec3 retCell;
                 int squareRadius = 10;
 
-                while (!GenCellFinder.TryFindRandomEdgeCellWith(pos => Math.Abs(pos.x - mirrorVec.x) <= squareRadius && Math.Abs(pos.y - mirrorVec.y) <= squareRadius && Math.Abs(pos.z - mirrorVec.z) <= squareRadius && !pos.Impassable(), out retCell))
+                while (!CellFinder.TryFindRandomEdgeCellWith(pos => Math.Abs(pos.x - mirrorVec.x) <= squareRadius && Math.Abs(pos.y - mirrorVec.y) <= squareRadius && Math.Abs(pos.z - mirrorVec.z) <= squareRadius && !pos.Impassable(), out retCell))
                 {
                     Log.Message("ExitVector not found with SquareRadius " + squareRadius + ". Increasing it by 10");
                     squareRadius += 10;                    
@@ -78,6 +78,13 @@ namespace AltReality.Rimworld.MigrationMod
         public static float GetChallengeModifier()
         {
             return (2.0f - Find.Storyteller.difficulty.threatScale).Clamp(0.1f, 2.0f);
+        }
+
+        public static PawnKindDef GetMigrationAnimalDef()
+        {
+            //Pick the animal type to migrate. For now we will pick the animal with the highest healthrange.  That should get us (hopefully) the biggest animal in the biome.
+            //return Find.Map.Biome.AllWildAnimals.MaxBy(def => def.pointsCost);
+            return Find.Map.Biome.AllWildAnimals.MaxBy(def => def.gearHealthRange.max);
         }
 
     }
